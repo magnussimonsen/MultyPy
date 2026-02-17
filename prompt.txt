@@ -1,0 +1,55 @@
+**Role:** You are an expert Python developer specializing in Terminal User Interfaces (TUI) using the `textual` framework.
+
+**Task:** Create a new Python project in the current directory named `MultiPy` (Multiplication Practice). This project should structurally mirror the `TouchPy` project provided in the context, but adapted for math instead of typing.
+
+**Project Structure:**
+Create the following folder structure:
+```text
+multipy/
+    __init__.py
+    app.py              # Main application entry point
+    models.py           # Data classes (e.g., SessionResults, Settings)
+    services/
+        __init__.py
+        math_generator.py # Logic for generating math problems
+        metrics.py      # Logic for calculating score/CPM
+    views/
+        __init__.py
+        menu_view.py    # Main menu & settings configuration
+        practice_view.py # The active game screen (Simple & Normal modes)
+        summary_view.py # Results screen
+        about_view.py   # About screen
+run.py                  # Entry script to run the app
+requirements.txt        # Project dependencies
+```
+
+**Functional Requirements:**
+
+1.  **Framework:** Use `textual` for the TUI.
+2.  **Configuration (Menu View):**
+    *   Allow user to set **Table Range** (e.g., from 1 to 10). Default: 10x10.
+    *   Allow user to set **Max Questions**. Default: 10.
+    *   Allow user to set **Time Limit**. Default: 30 seconds.
+    *   **Game Mode Selection:**
+        *   *Simple Mode:* Show a problem (e.g., "5 x 6") and 3 selectable buttons for answers.
+        *   *Normal Mode:* Show a problem and an Input field for the user to type the answer.
+3.  **Gameplay (Practice View):**
+    *   Display the current problem large and clear.
+    *   Display live stats: Timer (counting down), Current Question #.
+    *   Handle input validation.
+4.  **Statistics & Feedback:**
+    *   Track: Correct answers, Mistakes, Elapsed Time.
+    *   Calculate: CPM (Correct Per Minute).
+5.  **Summary View:**
+    *   Show final stats after the session ends (Time up or Questions finished).
+    *   Provide feedback messages based on score (similar to TouchPy's "Excellent!", "Good job!").
+6.  **Global UI:**
+    *   Include a Footer with bindings: 'q' to Quit, 'a' for About (where applicable).
+
+**Detailed Implementation Notes:**
+*   Ensure clear separation of concerns: `services` should handle logic, `views` should handle display.
+*   Use `textual` CSS for nice layout and styling (center alignment, distinct panels for stats).
+*   For "Simple Mode", generate 2 wrong answers that are plausible (close to the real answer).
+*   Dependencies: `textual`.
+
+Please generate the code for this project structure.
