@@ -1,0 +1,3 @@
+Normal Practice Mode - Bottom Menu Bar:
+- Add toggle for "Show/Hide Large Numbers"
+- Add toggle for "Show Correct Answer" (displays previous question's answer)
