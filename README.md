@@ -4,6 +4,12 @@ A educational app for practicing the multiplication table
 
 A terminal-based multiplication table practice tool built with Python and Textual.
 
+# Screenshots
+![Screenshot 1](screenshots/MultiPy-Screenshot-1.png)
+![Screenshot 2](screenshots/MultiPy-Screenshot-2.png)
+![Screenshot 3](screenshots/MultiPy-Screenshot-3.png)
+![Screenshot 4](screenshots/MultiPy-Screenshot-4.png)
+
 ## Features
 
 - **Practice Modes**:
