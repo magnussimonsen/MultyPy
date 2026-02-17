@@ -32,7 +32,7 @@ class MenuView(Screen):
     
     .setting-row {
         height: auto;
-        margin-bottom: 1;
+        margin-bottom: 0;
         align: center middle;
     }
 
@@ -48,7 +48,7 @@ class MenuView(Screen):
 
     #start-btn {
         width: 100%;
-        margin-top: 2;
+        margin-top: 1;
     }
     
     #about-btn {
@@ -66,7 +66,7 @@ class MenuView(Screen):
     def compose(self) -> ComposeResult:
         yield Header()
         with Container(id="menu-container"):
-            yield Static("✖ MultiPy ➗", classes="title")
+            yield Static("✖  MultiPy ", classes="title")
             
             # Simple inputs for settings
             with Horizontal(classes="setting-row"):

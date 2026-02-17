@@ -25,7 +25,6 @@ class SummaryView(Screen):
         text-align: center;
         text-style: bold;
         color: $accent;
-        text-size: 200%; # Attempting bigger text - textual might ignore percentage in terminal valid units are cells
         margin-bottom: 1;
     }
 
@@ -64,7 +63,8 @@ class SummaryView(Screen):
                 f"Correct: {self.results.correct_answers}\n"
                 f"Mistakes: {self.results.mistakes}\n"
                 f"Time: {self.results.elapsed_time:.1f}s\n"
-                f"CPM: {self.results.cpm:.1f}"
+                f"CPM: {self.results.cpm:.1f}\n"
+                f"🔥 Best Streak: {self.results.best_streak}"
             )
             yield Static(stats_text, classes="stats-row")
             
@@ -76,19 +76,14 @@ class SummaryView(Screen):
 
     @on(Button.Pressed, "#menu-btn")
     def return_to_menu(self):
-        self.app.pop_screen() # Pops summary
-        # Depending on flow, we might need to ensure we are back at menu.
-        # Typically PracticeView pushes SummaryView, so popping returns to PracticeView.
-        # But we want to go to Menu.
+        # We need to pop PracticeView as well.
+        # Since we are on SummaryView, we can't easily pop the screen *underneath* us directly 
+        # without closing ourselves first.
+        # But if we close ourselves, this handler (owned by SummaryView) might be cancelled.
+        # So we schedule the pops on the app level, independent of this screen's lifecycle.
         
-        # A clearer pattern:
-        # App has Menu. 
-        # Menu pushes Practice.
-        # Practice pushes Summary.
-        # Summary pop -> Practice.
-        # So we probably want to pop twice or use a mode switch.
-        
-        # Alternatively, we can use app.switch_screen if we register them.
-        # Let's assume we want to go back to the 'main' screen which is Menu.
-        self.app.pop_screen() # Pop Summary, revealing Practice
-        self.app.pop_screen() # Pop Practice, revealing Menu
+        def pop_twice():
+            self.app.pop_screen() # Pop SummaryView
+            self.app.pop_screen() # Pop PracticeView
+            
+        self.app.call_after_refresh(pop_twice)

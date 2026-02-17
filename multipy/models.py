@@ -18,6 +18,8 @@ class SessionResults:
     correct_answers: int = 0
     mistakes: int = 0
     elapsed_time: float = 0.0
+    current_streak: int = 0
+    best_streak: int = 0
     
     @property
     def cpm(self) -> float:
